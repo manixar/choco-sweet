@@ -1,0 +1,253 @@
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 23px; /* baseline (120) → intro (143) */
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.edition {
+  font-size: 11px;
+  color: var(--color-lime);
+}
+
+.heading {
+  font-size: 38px;
+  font-weight: 800;
+}
+
+.lede {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.note {
+  margin-top: 29px; /* 143 → 172 */
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.noteTitle {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.noteCopy {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.filters {
+  margin-top: 4px; /* 249 → 253 */
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.categories {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  white-space: nowrap;
+}
+
+.filter {
+  color: var(--color-muted);
+  transition: color 0.15s;
+}
+
+.filter:hover {
+  color: var(--color-text);
+}
+
+.filterActive,
+.filterActive:hover {
+  background: var(--color-lime);
+  color: var(--color-ink);
+  font-weight: 700;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.grid {
+  margin-top: 18px; /* 287 → 305 */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px 20px;
+}
+
+/* ---------- Product card ---------- */
+.card {
+  position: relative;
+  height: 248px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.stage {
+  position: relative;
+  height: 155px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 160px;
+  max-width: none;
+  pointer-events: none;
+}
+
+.portrait {
+  position: relative;
+  width: 250px;
+  height: 155px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .portrait {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.number {
+  position: absolute;
+  top: 18px;
+  inset-inline-end: 24px;
+  font-size: 11px;
+  color: var(--color-subtle);
+}
+
+.badge {
+  position: absolute;
+  top: 18px;
+  inset-inline-start: 58px;
+  font-size: 11px;
+  color: var(--color-lime);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 24px 0;
+}
+
+.title {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.titleLink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.purchase {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.add {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-lime);
+  color: var(--color-ink);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: filter 0.15s;
+}
+
+.add:hover {
+  filter: brightness(1.06);
+}
+
+@media (max-width: 1100px) {
+  .top {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .note {
+    margin-top: 0;
+    width: auto;
+    align-items: flex-start;
+  }
+  .intro,
+  .note {
+    white-space: normal;
+  }
+  .heading {
+    font-size: 30px;
+  }
+  .filters {
+    height: auto;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .categories {
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

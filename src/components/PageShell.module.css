@@ -1,0 +1,98 @@
+.frame {
+  position: relative;
+  max-width: var(--frame-width);
+  min-height: 900px;
+  margin: 0 auto;
+  padding: 37px var(--gutter) 21px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Decorative layers — positioned on the 1440×900 Figma frame */
+.ambient {
+  position: absolute;
+  top: 110px;
+  left: calc(50% - 540px); /* x=180 on a 1440 frame */
+  width: 1040px;
+  height: 740px;
+  max-width: none;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.watermark {
+  position: absolute;
+  left: calc(50% + 5px); /* centre at x=725 */
+  transform: translateX(-50%);
+  width: 850px;
+  text-align: center;
+  font-weight: 800;
+  color: var(--color-text);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+}
+
+.watermarkSoft {
+  top: 525px;
+  font-size: 150px;
+  opacity: 0.03;
+}
+
+.watermarkBold {
+  top: 125px;
+  font-size: 176px;
+  opacity: 0.07;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  margin-top: auto;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.signature {
+  color: var(--color-subtle);
+}
+
+.promises {
+  display: flex;
+  gap: 24px;
+  color: var(--color-muted);
+}
+
+.promiseAccent {
+  color: var(--color-lime);
+}
+
+@media (max-width: 1100px) {
+  .frame {
+    padding-inline: 24px;
+    min-height: 100vh;
+  }
+  .footer {
+    margin-top: 40px;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    white-space: normal;
+  }
+  .promises {
+    flex-wrap: wrap;
+    gap: 8px 24px;
+  }
+}

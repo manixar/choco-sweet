@@ -1,0 +1,6 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="480" height="52" viewBox="0 0 480 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="stroke0_0_9" fill="white">
+<path d="M480 26C480 40.3594 372.548 52 240 52C107.452 52 0 40.3594 0 26C0 11.6406 107.452 0 240 0C372.548 0 480 11.6406 480 26Z"/>
+</mask>
+<path id="Inner orbit" d="M480 26C480 40.3594 372.548 52 240 52C107.452 52 0 40.3594 0 26C0 11.6406 107.452 0 240 0C372.548 0 480 11.6406 480 26Z" stroke-width="2" stroke="white" stroke-opacity="0.0470588" mask="url(#stroke0_0_9)"/>
+</svg>

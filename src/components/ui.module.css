@@ -1,0 +1,293 @@
+/* ---------- Action button ---------- */
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 54px;
+  padding: 0 20px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: filter 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.action:active {
+  transform: scale(0.99);
+}
+
+.primary {
+  background: var(--color-lime);
+  border: 1px solid var(--color-lime);
+  color: var(--color-ink);
+}
+
+.primary:hover {
+  filter: brightness(1.06);
+}
+
+.secondary {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.secondary:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.block {
+  width: 100%;
+}
+
+/* ---------- Surfaces ---------- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+}
+
+.glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+/* ---------- Page introduction (eyebrow / title / copy) ---------- */
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.introEyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-lime);
+}
+
+.introTitle {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.introCopy {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+/* ---------- Checkout progress ---------- */
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  list-style: none;
+  margin: 0;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.stepTodo {
+  color: var(--color-subtle);
+}
+
+.stepDone {
+  color: var(--color-text);
+}
+
+.stepCurrent {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 400;
+  background: var(--color-lime);
+  border: 1px solid var(--color-lime);
+  color: var(--color-ink);
+}
+
+.stepTodo .stepIndicator {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-muted);
+}
+
+/* ---------- Order summary ---------- */
+.summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 21px;
+  padding: 28px;
+}
+
+.summaryHeading {
+  width: 100%;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.summaryCount {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.totalRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.totalLabel {
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.totalAmount {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.totalPayable {
+  font-size: 23px;
+  font-weight: 800;
+  color: var(--color-lime);
+}
+
+.currency {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.assurance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+/* ---------- Ordered pastry (small item card) ---------- */
+.pastryRow {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.pastry {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 86px;
+  padding: 12px;
+  border-radius: var(--radius-field);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.pastryImage {
+  width: 76px;
+  height: 64px;
+  border-radius: var(--radius-thumb);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.pastryInfo {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.pastryName {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pastryMeta {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+/* ---------- Option tile (radio) ---------- */
+.option {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border-radius: var(--radius-field);
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 13px;
+  text-align: start;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.option:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.optionSelected,
+.optionSelected:hover {
+  background: var(--color-lime-tint);
+  border-color: var(--color-lime);
+  color: var(--color-text);
+}
+
+@media (max-width: 700px) {
+  .progress {
+    padding: 0 16px;
+  }
+  .step span:last-child {
+    display: none;
+  }
+  .step.stepCurrent span:last-child {
+    display: inline;
+  }
+  .pastryRow {
+    flex-direction: column;
+  }
+}

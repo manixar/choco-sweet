@@ -1,0 +1,407 @@
+.arrival {
+  grid-column: 2;
+  grid-row: 1;
+  margin-top: 50px; /* y=170 */
+  height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.arrivalInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  white-space: nowrap;
+}
+
+.arrivalLabel {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.arrivalTime {
+  font-size: 27px;
+  font-weight: 800;
+  color: var(--color-lime);
+}
+
+.banner {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-radius: var(--radius-pill);
+  background: rgba(163, 230, 53, 0.06);
+  border: 1px solid rgba(163, 230, 53, 0.27);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-lime);
+  white-space: nowrap;
+}
+
+.live {
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.disclaimer {
+  font-size: 11px;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+/* ---------- Three columns: 434 | 24 | 464 | 32 | 390 ---------- */
+.columns {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: minmax(0, 434fr) 24px minmax(0, 464fr) 32px minmax(0, 390fr);
+  align-items: start;
+}
+
+.columns > :nth-child(1) { grid-column: 1; }
+.columns > :nth-child(2) { grid-column: 3; }
+.columns > :nth-child(3) { grid-column: 5; }
+
+/* ---------- Timeline ---------- */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 26px;
+  list-style: none;
+  margin: 0;
+}
+
+.timelineTitle {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.milestone {
+  height: 76px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.marker {
+  width: 32px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.ring {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.ringDone {
+  background: var(--color-lime);
+  border-color: var(--color-lime);
+}
+
+.ringCurrent {
+  border-color: var(--color-lime);
+}
+
+.connector {
+  width: 1px;
+  height: 33px;
+  background: var(--color-border);
+}
+
+.connectorDone {
+  background: var(--color-lime);
+}
+
+.milestoneText {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.milestoneTitle {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.titleCurrent {
+  font-weight: 800;
+  color: var(--color-lime);
+}
+
+.titlePending {
+  color: var(--color-subtle);
+}
+
+.milestoneTime {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+/* ---------- Route map ---------- */
+.middle {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.route {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+}
+
+.routeLayer {
+  position: absolute;
+  max-width: none;
+}
+
+.c1 { left: 19px; top: 35px; width: 430px; height: 310px; }
+.c2 { left: 52px; top: 55px; width: 364px; height: 270px; }
+.c3 { left: 85px; top: 75px; width: 298px; height: 230px; }
+.c4 { left: 118px; top: 95px; width: 232px; height: 190px; }
+
+.routeTitle {
+  position: absolute;
+  top: 22px;
+  right: 23px;
+  width: 416px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.planned {
+  position: absolute;
+  left: 79px;
+  top: 108px;
+  width: 300px;
+  height: 147px;
+}
+
+.completed {
+  position: absolute;
+  left: 219px;
+  top: 107.5px;
+  width: 160px;
+  height: 73px;
+}
+
+.pin {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+}
+
+.bakery {
+  left: 352px;
+  top: 88px;
+  width: 42px;
+  height: 42px;
+  background: var(--color-panel);
+  border: 1px solid var(--color-lime);
+}
+
+.courier {
+  left: 199px;
+  top: 157px;
+  width: 44px;
+  height: 44px;
+  background: var(--color-lime);
+  box-shadow: 0 0 0 0 rgba(163, 230, 53, 0.5);
+  animation: ping 2.2s ease-out infinite;
+}
+
+@keyframes ping {
+  70% {
+    box-shadow: 0 0 0 12px rgba(163, 230, 53, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(163, 230, 53, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .courier,
+  .live {
+    animation: none;
+  }
+}
+
+.home {
+  left: 60px;
+  top: 233px;
+  width: 36px;
+  height: 36px;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+}
+
+.routeNote {
+  position: absolute;
+  top: 283px;
+  right: 23px;
+  width: 416px;
+  font-size: 11px;
+  color: var(--color-subtle);
+}
+
+.support {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+}
+
+.supportTitle {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ---------- Shipment details ---------- */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 26px;
+}
+
+.detailsHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.detailsTitle {
+  font-size: 17px;
+}
+
+.detailsNumber {
+  font-size: 22px;
+  color: var(--color-lime);
+}
+
+.thumbs {
+  display: flex;
+  gap: 14px;
+}
+
+.thumb {
+  width: 100px;
+  height: 76px;
+  object-fit: cover;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contents {
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.recipient {
+  gap: 8px;
+}
+
+.strong {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.small {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.address {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--color-muted);
+}
+
+.window {
+  font-size: 12px;
+  color: var(--color-lime);
+  white-space: nowrap;
+}
+
+.paidRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+
+.paidAmount {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .arrival {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 16px;
+  }
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 24px;
+  }
+  .columns > :nth-child(n) {
+    grid-column: 1;
+  }
+  .route {
+    max-width: 464px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .banner {
+    height: auto;
+    padding: 12px 20px;
+    border-radius: var(--radius-card);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .disclaimer {
+    white-space: normal;
+  }
+}

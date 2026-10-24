@@ -1,0 +1,401 @@
+/*
+ * The product hero is an art-directed composition, so it keeps the exact
+ * Figma coordinates on a 1344×759 stage (frame x−48, y−120) and scales
+ * down as a unit on narrower desktops. Phones get a stacked layout.
+ */
+.viewport {
+  position: relative;
+  flex: 1;
+  height: calc(759px * var(--scale, 1));
+}
+
+.stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1344px;
+  height: 759px;
+  transform: scale(var(--scale, 1));
+  transform-origin: top left;
+}
+
+.abs {
+  position: absolute;
+}
+
+.indicator {
+  left: 0;
+  top: 37px;
+  font-size: 14px;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.shadow {
+  left: 360px;
+  top: 565px;
+  width: 450px;
+  height: 35px;
+}
+
+.shadow img {
+  position: absolute;
+  inset: -68.57% -5.33%;
+  width: calc(100% + 10.66%);
+  height: calc(100% + 137.14%);
+  max-width: none;
+}
+
+.precisionOrbit {
+  left: 274px;
+  top: 532px;
+  width: 642px;
+  height: 84px;
+}
+
+.innerOrbit {
+  left: 353px;
+  top: 548px;
+  width: 480px;
+  height: 52px;
+}
+
+.pastry {
+  left: 251px;
+  top: 60px;
+  width: 696px;
+  height: 530px;
+  object-fit: cover;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pastry {
+    animation: none;
+  }
+}
+
+/* ---------- Story ---------- */
+.story {
+  left: 970px;
+  top: 122px;
+  width: 374px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-lime);
+  white-space: nowrap;
+}
+
+.accent {
+  width: 23px;
+  height: 1px;
+  background: var(--color-lime);
+}
+
+.title {
+  width: 100%;
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.title span {
+  display: block;
+}
+
+.description {
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.95;
+  color: var(--color-muted);
+}
+
+.purchase {
+  width: 100%;
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.allergens {
+  width: 100%;
+  font-size: 11px;
+  color: var(--color-subtle);
+}
+
+/* ---------- Specifications ---------- */
+.specs {
+  left: 0;
+  top: 229px;
+  width: 218px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.specsHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+.spec {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metricInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+.metricLabel {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.metricValue {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* ---------- Ingredient annotations ---------- */
+.annotations {
+  transition: opacity 0.3s;
+}
+
+.annotationsHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.leaderTop {
+  left: 780px;
+  top: 127px;
+  width: 110px;
+  height: 120px;
+}
+
+.leaderTop img {
+  position: absolute;
+  inset: -0.42% 0 -0.11% -0.44%;
+  width: calc(100% + 0.44%);
+  height: calc(100% + 0.53%);
+  max-width: none;
+}
+
+.leaderBottom {
+  left: 332px;
+  top: 381px;
+  width: 100px;
+  height: 112px;
+}
+
+.leaderBottom img {
+  position: absolute;
+  inset: -0.13% -0.48% -0.45% 0;
+  width: calc(100% + 0.48%);
+  height: calc(100% + 0.58%);
+  max-width: none;
+}
+
+.tooltip {
+  width: 224px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: var(--radius-field);
+  background: var(--color-tooltip);
+  border: 1px solid var(--color-border);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.tooltipTop {
+  left: 702px;
+  top: 87px;
+}
+
+.tooltipBottom {
+  left: 249px;
+  top: 492px;
+}
+
+.haloTop {
+  left: 780px;
+  top: 234px;
+}
+
+.dotTop {
+  left: 789px;
+  top: 243px;
+}
+
+.haloBottom {
+  left: 419px;
+  top: 370px;
+}
+
+.dotBottom {
+  left: 428px;
+  top: 379px;
+}
+
+.halo {
+  animation: pulse 2.4s ease-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* ---------- Caption & dock ---------- */
+.caption {
+  left: 437px;
+  top: 623px;
+  width: 318px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--color-subtle);
+  white-space: nowrap;
+}
+
+.rule {
+  width: 32px;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.dock {
+  left: 50px;
+  top: 680px;
+  width: 1244px;
+  height: 76px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.choice {
+  flex: 1 0 0;
+  min-width: 0;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  color: var(--color-muted);
+  white-space: nowrap;
+  transition: color 0.15s, background 0.15s;
+}
+
+a.choice:hover {
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.choiceActive,
+a.choiceActive:hover {
+  background: var(--color-lime);
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+/* ---------- Phones / small tablets: stacked layout ---------- */
+@media (max-width: 900px) {
+  .viewport {
+    height: auto;
+  }
+  .stage {
+    position: static;
+    width: auto;
+    height: auto;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 24px;
+  }
+  .abs {
+    position: static;
+  }
+  .pastry {
+    order: -1;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 696 / 530;
+  }
+  .story,
+  .specs,
+  .dock {
+    width: auto;
+  }
+  .title {
+    font-size: 38px;
+  }
+  .shadow,
+  .precisionOrbit,
+  .innerOrbit,
+  .annotations,
+  .caption,
+  .indicator {
+    display: none;
+  }
+  .dock {
+    height: auto;
+    border-radius: var(--radius-card);
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .choice {
+    flex: 1 0 40%;
+    height: 44px;
+  }
+}

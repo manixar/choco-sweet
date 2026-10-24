@@ -1,0 +1,153 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shipping {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+}
+
+.shippingHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+
+.recipient {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.edit {
+  font-size: 12px;
+  color: var(--color-lime);
+}
+
+.edit:hover {
+  text-decoration: underline;
+}
+
+.address {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+
+.schedule {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-lime);
+}
+
+.phone {
+  font-size: 12px;
+  color: var(--color-subtle);
+}
+
+.note {
+  font-size: 11px;
+  color: var(--color-subtle);
+}
+
+.payment {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+}
+
+.paymentHeading {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.options {
+  display: flex;
+  gap: 16px;
+}
+
+.option {
+  height: 62px;
+}
+
+.optionText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+.optionTitle {
+  font-size: 13px;
+}
+
+.optionSelectedTitle {
+  font-weight: 600;
+}
+
+.optionHint {
+  font-size: 11px;
+  color: var(--color-subtle);
+}
+
+.optionSelectedHint {
+  color: var(--color-muted);
+}
+
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--color-muted);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--color-ink);
+  background: var(--color-lime);
+  border: 1px solid var(--color-lime);
+  flex-shrink: 0;
+}
+
+.checkboxOff {
+  background: transparent;
+  border-color: var(--color-border);
+  color: transparent;
+}
+
+@media (max-width: 700px) {
+  .options,
+  .preview,
+  .shippingHead {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .preview,
+  .optionText {
+    white-space: normal;
+  }
+}

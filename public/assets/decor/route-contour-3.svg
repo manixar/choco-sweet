@@ -1,0 +1,6 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="364" height="270" viewBox="0 0 364 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="stroke0_0_21" fill="white">
+<path d="M364 135C364 209.558 282.516 270 182 270C81.4842 270 0 209.558 0 135C0 60.4416 81.4842 0 182 0C282.516 0 364 60.4416 364 135Z"/>
+</mask>
+<path id="Route contour" d="M364 135C364 209.558 282.516 270 182 270C81.4842 270 0 209.558 0 135C0 60.4416 81.4842 0 182 0C282.516 0 364 60.4416 364 135Z" stroke-width="2" stroke="#A3E635" stroke-opacity="0.0705882" mask="url(#stroke0_0_21)"/>
+</svg>
