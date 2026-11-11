@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { PageShell } from '../components/PageShell';
-import { Icon } from '../components/Icon';
-import { CheckoutProgress, OptionTile, OrderedPastry, OrderSummary, PageIntro, ui } from '../components/ui';
-import { useCart } from '../state/cart';
-import { faNumber, toman } from '../lib/format';
-import l from './layout.module.css';
+import { PageShell } from '../../components/layout/PageShell';
+import { Icon } from '../../components/ui/Icon';
+import { CheckoutProgress, OptionTile, OrderedPastry, OrderSummary, PageIntro, ui } from '../../components/ui/ui';
+import { useCart } from '../../state/cart';
+import { faNumber, toman } from '../../lib/format';
+import l from '../../styles/checkout-layout.module.css';
 import s from './Review.module.css';
 
 export default function Review() {
@@ -39,7 +39,7 @@ export default function Review() {
             <p className={s.address}>تهران، خیابان نمونه، پلاک ۱۲، واحد ۳ (آدرس نمایشی)</p>
             <div className={s.preview}>
               <p className={s.schedule}>
-                <Icon src="icons/truck-18-lime.svg" size={18} />
+                <Icon src="icons/truck-18-accent.svg" size={18} />
                 پیک محافظ تازگی • جمعه ۱ آبان، ۱۰ تا ۱۲
               </p>
               <p className={s.phone}>

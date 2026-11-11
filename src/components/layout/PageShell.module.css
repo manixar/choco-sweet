@@ -75,7 +75,7 @@
 }
 
 .promiseAccent {
-  color: var(--color-lime);
+  color: var(--color-accent);
 }
 
 @media (max-width: 1100px) {

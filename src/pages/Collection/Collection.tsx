@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { PageShell } from '../components/PageShell';
-import { Icon } from '../components/Icon';
-import { products, type Category, type Product } from '../data/products';
-import { useCart } from '../state/cart';
-import { asset, faIndex, faNumber, toman } from '../lib/format';
+import { PageShell } from '../../components/layout/PageShell';
+import { Icon } from '../../components/ui/Icon';
+import { products, type Category, type Product } from '../../data/products';
+import { useCart } from '../../state/cart';
+import { asset, faIndex, faNumber, toman } from '../../lib/format';
 import s from './Collection.module.css';
 
 type Filter = 'all' | Category;

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Header } from './Header';
-import { asset } from '../lib/format';
+import { asset } from '../../lib/format';
 import s from './PageShell.module.css';
 
 interface PageShellProps {

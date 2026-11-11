@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { PageShell } from '../components/PageShell';
-import { Icon } from '../components/Icon';
-import { Action, CheckoutProgress, OrderSummary, PageIntro, ui } from '../components/ui';
-import { SHIPPING_FEE } from '../data/products';
-import { useCart } from '../state/cart';
-import { asset, faNumber, toman } from '../lib/format';
-import l from './layout.module.css';
+import { PageShell } from '../../components/layout/PageShell';
+import { Icon } from '../../components/ui/Icon';
+import { Action, CheckoutProgress, OrderSummary, PageIntro, ui } from '../../components/ui/ui';
+import { SHIPPING_FEE } from '../../data/products';
+import { useCart } from '../../state/cart';
+import { asset, faNumber, toman } from '../../lib/format';
+import l from '../../styles/checkout-layout.module.css';
 import s from './Cart.module.css';
 
 export default function Cart() {

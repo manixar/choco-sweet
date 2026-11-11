@@ -6,12 +6,24 @@ React 18 + TypeScript + Vite + React Router + CSS Modules، راست‌به‌چ
 
 ```bash
 npm install
-npm run assets   # تصاویر و آیکون‌ها را از فیگما در public/assets دانلود می‌کند
 npm run dev
 ```
 
-> لینک‌های asset فیگما حدود ۷ روز (تا حدود ۳۱ اکتبر ۲۰۲۶) معتبرند. اگر منقضی شدند، همان فایل‌ها را با همین نام‌ها از فیگما
-> Export کنید و در `public/assets` بگذارید — فهرست کامل نام‌ها در `scripts/figma-assets.json` است.
+> ⚠️ `npm run assets` را اجرا نکنید: آیکون‌ها و تزئینات `public/assets` برای پالت جدید (کرم و زرشکی) رنگ‌آمیزی شده‌اند
+> و این اسکریپت نسخه‌های سبز قدیمی فیگما را رویشان می‌نویسد.
+
+## پالت رنگ
+
+همهٔ رنگ‌ها در `src/styles/theme.css` تعریف شده‌اند؛ برای تغییر حال‌وهوا فقط همین فایل را عوض کنید.
+
+| توکن | رنگ | کاربرد |
+|---|---|---|
+| `--color-bg` | `#fbf4e6` کرم | زمینهٔ صفحه |
+| `--color-panel` | `#fffdf8` | کارت‌ها و پنل‌ها |
+| `--color-text` | `#3b1f1a` شکلاتی | متن اصلی |
+| `--color-muted` / `--color-subtle` | `#7a5a50` / `#a88e82` | متن‌های فرعی |
+| `--color-accent` | `#a3243b` زرشکی | دکمه‌ها، لینک‌ها، آیکون‌های تأکیدی |
+| `--color-on-accent` | `#fff8ee` | متن روی دکمه‌های زرشکی |
 
 ## صفحه‌ها
 
@@ -29,12 +41,22 @@ npm run dev
 
 ```
 src/
-  styles/global.css        توکن‌های رنگ، شعاع و فونت
-  components/              Header، PageShell (پس‌زمینه/فوتر)، Action، OrderSummary، CheckoutProgress …
-  pages/                   هر صفحه + ماژول CSS خودش
-  data/products.ts         داده‌های شش شیرینی (متن، قیمت، مشخصات، تصاویر)
-  state/cart.tsx           سبد خرید واقعی (افزودن، تعداد، حذف، جمع کل)
-scripts/                   دانلود asset ها از فیگما
+  main.tsx, App.tsx              ورود برنامه و مسیرها
+  styles/
+    theme.css                    توکن‌های رنگ، شعاع، فاصله و فونت
+    global.css                   استایل‌های پایهٔ کل سایت
+    checkout-layout.module.css   چیدمان مشترک صفحه‌های سبد و پرداخت
+  components/
+    layout/                      Header و PageShell (پس‌زمینه، واترمارک، فوتر)
+    ui/                          Icon و اجزای مشترک (Action، OrderSummary، CheckoutProgress …)
+  pages/<Page>/                  هر صفحه در فولدر خودش، کنار ماژول CSS خودش
+  data/                          داده‌های شیرینی‌ها و سفارش نمونه
+  state/cart.tsx                 سبد خرید (افزودن، تعداد، حذف، جمع کل)
+  lib/format.ts                  اعداد فارسی، قیمت و مسیر asset ها
+public/assets/
+  icons/  decor/  products/      آیکون‌ها، تزئینات و عکس شیرینی‌ها
+docs/screenshots/                اسکرین‌شات‌های مرجع طرح
+scripts/                         اسکریپت قدیمی دانلود asset از فیگما
 ```
 
 ## نکته‌ها

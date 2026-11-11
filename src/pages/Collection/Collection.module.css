@@ -15,7 +15,7 @@
 
 .edition {
   font-size: 11px;
-  color: var(--color-lime);
+  color: var(--color-accent);
 }
 
 .heading {
@@ -76,8 +76,8 @@
 
 .filterActive,
 .filterActive:hover {
-  background: var(--color-lime);
-  color: var(--color-ink);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
   font-weight: 700;
   padding: 7px 16px;
   border-radius: var(--radius-pill);
@@ -111,7 +111,7 @@
 }
 
 .card:hover {
-  border-color: rgba(255, 255, 255, 0.28);
+  border-color: rgba(90, 45, 30, 0.28);
 }
 
 .stage {
@@ -159,7 +159,7 @@
   top: 18px;
   inset-inline-start: 58px;
   font-size: 11px;
-  color: var(--color-lime);
+  color: var(--color-accent);
 }
 
 .info {
@@ -201,8 +201,8 @@
   height: 30px;
   padding: 0 12px;
   border-radius: var(--radius-pill);
-  background: var(--color-lime);
-  color: var(--color-ink);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
   font-size: 11px;
   font-weight: 700;
   white-space: nowrap;

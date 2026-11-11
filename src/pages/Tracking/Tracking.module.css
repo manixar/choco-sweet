@@ -24,7 +24,7 @@
 .arrivalTime {
   font-size: 27px;
   font-weight: 800;
-  color: var(--color-lime);
+  color: var(--color-accent);
 }
 
 .banner {
@@ -34,8 +34,8 @@
   justify-content: space-between;
   padding: 0 24px;
   border-radius: var(--radius-pill);
-  background: rgba(163, 230, 53, 0.06);
-  border: 1px solid rgba(163, 230, 53, 0.27);
+  background: rgba(163, 36, 59, 0.06);
+  border: 1px solid rgba(163, 36, 59, 0.27);
 }
 
 .status {
@@ -44,7 +44,7 @@
   gap: 10px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--color-lime);
+  color: var(--color-accent);
   white-space: nowrap;
 }
 
@@ -119,12 +119,12 @@
 }
 
 .ringDone {
-  background: var(--color-lime);
-  border-color: var(--color-lime);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .ringCurrent {
-  border-color: var(--color-lime);
+  border-color: var(--color-accent);
 }
 
 .connector {
@@ -134,7 +134,7 @@
 }
 
 .connectorDone {
-  background: var(--color-lime);
+  background: var(--color-accent);
 }
 
 .milestoneText {
@@ -154,7 +154,7 @@
 
 .titleCurrent {
   font-weight: 800;
-  color: var(--color-lime);
+  color: var(--color-accent);
 }
 
 .titlePending {
@@ -228,7 +228,7 @@
   width: 42px;
   height: 42px;
   background: var(--color-panel);
-  border: 1px solid var(--color-lime);
+  border: 1px solid var(--color-accent);
 }
 
 .courier {
@@ -236,17 +236,17 @@
   top: 157px;
   width: 44px;
   height: 44px;
-  background: var(--color-lime);
-  box-shadow: 0 0 0 0 rgba(163, 230, 53, 0.5);
+  background: var(--color-accent);
+  box-shadow: 0 0 0 0 rgba(163, 36, 59, 0.5);
   animation: ping 2.2s ease-out infinite;
 }
 
 @keyframes ping {
   70% {
-    box-shadow: 0 0 0 12px rgba(163, 230, 53, 0);
+    box-shadow: 0 0 0 12px rgba(163, 36, 59, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(163, 230, 53, 0);
+    box-shadow: 0 0 0 0 rgba(163, 36, 59, 0);
   }
 }
 
@@ -309,7 +309,7 @@
 
 .detailsNumber {
   font-size: 22px;
-  color: var(--color-lime);
+  color: var(--color-accent);
 }
 
 .thumbs {
@@ -357,7 +357,7 @@
 
 .window {
   font-size: 12px;
-  color: var(--color-lime);
+  color: var(--color-accent);
   white-space: nowrap;
 }
 

@@ -1,8 +1,8 @@
-import { PageShell } from '../components/PageShell';
-import { Icon } from '../components/Icon';
-import { Action, OrderedPastry, ui } from '../components/ui';
-import { sampleOrder as o } from '../data/order';
-import { asset } from '../lib/format';
+import { PageShell } from '../../components/layout/PageShell';
+import { Icon } from '../../components/ui/Icon';
+import { Action, OrderedPastry, ui } from '../../components/ui/ui';
+import { sampleOrder as o } from '../../data/order';
+import { asset } from '../../lib/format';
 import s from './Confirmation.module.css';
 
 export default function Confirmation() {

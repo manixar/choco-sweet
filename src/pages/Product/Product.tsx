@@ -1,11 +1,11 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { PageShell } from '../components/PageShell';
-import { Icon } from '../components/Icon';
-import { Action, ui } from '../components/ui';
-import { getProduct, products } from '../data/products';
-import { useCart } from '../state/cart';
-import { asset, faIndex, toman } from '../lib/format';
+import { PageShell } from '../../components/layout/PageShell';
+import { Icon } from '../../components/ui/Icon';
+import { Action, ui } from '../../components/ui/ui';
+import { getProduct, products } from '../../data/products';
+import { useCart } from '../../state/cart';
+import { asset, faIndex, toman } from '../../lib/format';
 import s from './Product.module.css';
 
 const STAGE_WIDTH = 1344;

@@ -1,0 +1,36 @@
+/* ─────────────────────────────────────────────
+   پالت چوکو بار — حال‌وهوای شیرینی‌فروشی
+   زمینهٔ کرم، رنگ اصلی زرشکی تمشکی، متن شکلاتی
+   ───────────────────────────────────────────── */
+:root {
+  /* Base */
+  --color-bg: #fbf4e6;            /* کرم */
+  --color-panel: #fffdf8;         /* کارت‌ها و پنل‌ها */
+  --color-surface: rgba(255, 252, 246, 0.65);
+  --color-border: rgba(90, 45, 30, 0.14);
+  --color-tooltip: rgba(255, 252, 246, 0.96);
+
+  /* Text */
+  --color-text: #3b1f1a;          /* شکلات تلخ */
+  --color-muted: #7a5a50;
+  --color-subtle: #a88e82;
+
+  /* Accent — زرشکی */
+  --color-accent: #a3243b;
+  --color-accent-strong: #861b2f;
+  --color-accent-tint: rgba(163, 36, 59, 0.06);
+  --color-on-accent: #fff8ee;     /* متن و آیکون روی دکمه‌های زرشکی */
+  --color-caramel: #c8873f;       /* رنگ مکمل کاراملی */
+
+  /* Radii */
+  --radius-pill: 999px;
+  --radius-card: 28px;
+  --radius-field: 14px;
+  --radius-thumb: 10px;
+
+  /* Layout */
+  --frame-width: 1440px;
+  --gutter: 48px;
+
+  --font: 'Vazirmatn', system-ui, sans-serif;
+}

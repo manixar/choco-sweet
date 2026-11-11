@@ -1,4 +1,4 @@
-import { asset } from '../lib/format';
+import { asset } from '../../lib/format';
 
 interface IconProps {
   /** Path inside public/assets, e.g. "icons/plus-18-dark.svg" */

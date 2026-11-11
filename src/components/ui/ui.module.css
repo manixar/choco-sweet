@@ -18,9 +18,9 @@
 }
 
 .primary {
-  background: var(--color-lime);
-  border: 1px solid var(--color-lime);
-  color: var(--color-ink);
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 .primary:hover {
@@ -34,7 +34,7 @@
 }
 
 .secondary:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(90, 45, 30, 0.3);
 }
 
 .block {
@@ -71,7 +71,7 @@
 .introEyebrow {
   font-size: 11px;
   font-weight: 600;
-  color: var(--color-lime);
+  color: var(--color-accent);
 }
 
 .introTitle {
@@ -130,9 +130,9 @@
   border-radius: var(--radius-pill);
   font-size: 12px;
   font-weight: 400;
-  background: var(--color-lime);
-  border: 1px solid var(--color-lime);
-  color: var(--color-ink);
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  color: var(--color-on-accent);
 }
 
 .stepTodo .stepIndicator {
@@ -182,7 +182,7 @@
 .totalPayable {
   font-size: 23px;
   font-weight: 800;
-  color: var(--color-lime);
+  color: var(--color-accent);
 }
 
 .currency {
@@ -267,13 +267,13 @@
 }
 
 .option:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(90, 45, 30, 0.3);
 }
 
 .optionSelected,
 .optionSelected:hover {
-  background: var(--color-lime-tint);
-  border-color: var(--color-lime);
+  background: var(--color-accent-tint);
+  border-color: var(--color-accent);
   color: var(--color-text);
 }
 

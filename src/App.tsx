@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import Collection from './pages/Collection';
-import Product from './pages/Product';
-import Cart from './pages/Cart';
-import Shipping from './pages/Shipping';
-import Review from './pages/Review';
-import Confirmation from './pages/Confirmation';
-import Tracking from './pages/Tracking';
+import Collection from './pages/Collection/Collection';
+import Product from './pages/Product/Product';
+import Cart from './pages/Cart/Cart';
+import Shipping from './pages/Shipping/Shipping';
+import Review from './pages/Review/Review';
+import Confirmation from './pages/Confirmation/Confirmation';
+import Tracking from './pages/Tracking/Tracking';
 
 function ScrollToTop() {
   const { pathname } = useLocation();

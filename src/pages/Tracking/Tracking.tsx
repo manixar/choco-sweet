@@ -1,9 +1,9 @@
-import { PageShell } from '../components/PageShell';
-import { Icon } from '../components/Icon';
-import { Action, PageIntro, ui } from '../components/ui';
-import { sampleOrder as o } from '../data/order';
-import { asset } from '../lib/format';
-import l from './layout.module.css';
+import { PageShell } from '../../components/layout/PageShell';
+import { Icon } from '../../components/ui/Icon';
+import { Action, PageIntro, ui } from '../../components/ui/ui';
+import { sampleOrder as o } from '../../data/order';
+import { asset } from '../../lib/format';
+import l from '../../styles/checkout-layout.module.css';
 import s from './Tracking.module.css';
 
 type MilestoneState = 'done' | 'current' | 'pending';
@@ -11,7 +11,7 @@ type MilestoneState = 'done' | 'current' | 'pending';
 const MILESTONES: { title: string; time: string; state: MilestoneState; icon: string }[] = [
   { title: 'ثبت و پرداخت سفارش', time: 'جمعه ۱ آبان • ساعت ۰۹:۱۰', state: 'done', icon: 'icons/check-16-dark.svg' },
   { title: 'پخت و بسته‌بندی تازه', time: 'جمعه ۱ آبان • ساعت ۰۹:۳۵', state: 'done', icon: 'icons/check-16-dark.svg' },
-  { title: 'در مسیر شما', time: 'تحویل به پیک • ساعت ۱۰:۰۵', state: 'current', icon: 'icons/truck-16-lime.svg' },
+  { title: 'در مسیر شما', time: 'تحویل به پیک • ساعت ۱۰:۰۵', state: 'current', icon: 'icons/truck-16-accent.svg' },
   { title: 'تحویل درِ خانه', time: 'زمان تخمینی: امروز ساعت ۱۰:۴۵', state: 'pending', icon: 'icons/package-check.svg' },
 ];
 

@@ -1,9 +1,9 @@
 import { useState, type InputHTMLAttributes, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PageShell } from '../components/PageShell';
-import { Icon } from '../components/Icon';
-import { CheckoutProgress, OptionTile, OrderSummary, PageIntro, ui } from '../components/ui';
-import l from './layout.module.css';
+import { PageShell } from '../../components/layout/PageShell';
+import { Icon } from '../../components/ui/Icon';
+import { CheckoutProgress, OptionTile, OrderSummary, PageIntro, ui } from '../../components/ui/ui';
+import l from '../../styles/checkout-layout.module.css';
 import s from './Shipping.module.css';
 
 export default function Shipping() {

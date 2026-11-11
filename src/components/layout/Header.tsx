@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
-import { Icon } from './Icon';
-import { useCart } from '../state/cart';
-import { faNumber } from '../lib/format';
+import { Icon } from '../ui/Icon';
+import { useCart } from '../../state/cart';
+import { faNumber } from '../../lib/format';
 import s from './Header.module.css';
 
 export function Header() {

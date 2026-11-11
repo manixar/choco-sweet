@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from './Icon';
-import { useCart } from '../state/cart';
-import { asset, faNumber, toman } from '../lib/format';
+import { useCart } from '../../state/cart';
+import { asset, faNumber, toman } from '../../lib/format';
 import s from './ui.module.css';
 
 export { s as ui };

@@ -44,6 +44,7 @@
   width: calc(100% + 10.66%);
   height: calc(100% + 137.14%);
   max-width: none;
+  opacity: 0.35;
 }
 
 .precisionOrbit {
@@ -98,14 +99,14 @@
   gap: 9px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--color-lime);
+  color: var(--color-accent);
   white-space: nowrap;
 }
 
 .accent {
   width: 23px;
   height: 1px;
-  background: var(--color-lime);
+  background: var(--color-accent);
 }
 
 .title {
@@ -338,13 +339,13 @@
 
 a.choice:hover {
   color: var(--color-text);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(90, 45, 30, 0.04);
 }
 
 .choiceActive,
 a.choiceActive:hover {
-  background: var(--color-lime);
-  color: var(--color-ink);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
   font-weight: 700;
 }
 
