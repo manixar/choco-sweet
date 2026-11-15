@@ -321,11 +321,20 @@
   border: 1px solid var(--color-border);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  gap: 4px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.dock::-webkit-scrollbar {
+  display: none;
 }
 
 .choice {
-  flex: 1 0 0;
-  min-width: 0;
+  flex: 0 0 auto;
+  padding: 0 22px;
   height: 54px;
   display: flex;
   align-items: center;

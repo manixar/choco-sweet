@@ -29,6 +29,17 @@ export default function Product() {
   const { add } = useCart();
   const [showLayers, setShowLayers] = useState(true);
   const { ref, scale } = useStageScale();
+  const dockRef = useRef<HTMLElement>(null);
+
+  // Keep the current pastry centred in the scrollable dock.
+  useLayoutEffect(() => {
+    const dock = dockRef.current;
+    const active = dock?.querySelector<HTMLElement>('[aria-current="page"]');
+    if (!dock || !active) return;
+    const d = dock.getBoundingClientRect();
+    const a = active.getBoundingClientRect();
+    dock.scrollTo({ left: dock.scrollLeft + (a.left + a.width / 2) - (d.left + d.width / 2), behavior: 'instant' });
+  }, [slug]);
 
   if (!product || !product.hasPage) return <Navigate to="/" replace />;
 
@@ -111,7 +122,7 @@ export default function Product() {
             {faIndex(product.index)} / {faIndex(products.length)}
           </p>
 
-          <nav className={`${s.abs} ${s.dock}`} aria-label="کالکشن شیرینی‌ها">
+          <nav ref={dockRef} className={`${s.abs} ${s.dock}`} aria-label="کالکشن شیرینی‌ها">
             {products.map((p) => {
               const label = `${faIndex(p.index)}. ${p.name}`;
               const active = p.slug === product.slug;

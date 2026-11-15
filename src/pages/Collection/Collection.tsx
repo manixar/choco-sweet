@@ -25,7 +25,7 @@ export default function Collection() {
       <section className={s.top}>
         <div className={s.intro}>
           <p className={s.edition}>کالکشن وینوازری ۲۰۲۶ • پخت محدود روزانه</p>
-          <h1 className={s.heading}>شش روایت از یک وسوسه</h1>
+          <h1 className={s.heading}>چهارده روایت از یک وسوسه</h1>
           <p className={s.lede}>از لایهٔ اول تا آخرین خرده؛ جعبهٔ دلخواهت را بساز.</p>
         </div>
         <div className={s.note}>
