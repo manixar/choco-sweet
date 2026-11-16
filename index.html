@@ -2,8 +2,20 @@
 <html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>چوکوبار</title>
+
+    <!-- PWA: installable app -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#a3243b" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/pwa/icon-192.png" />
+
+    <!-- iPhone / iPad: "Add to Home Screen" -->
+    <link rel="apple-touch-icon" href="/pwa/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="چوکوبار" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   </head>
   <body>
     <div id="root"></div>

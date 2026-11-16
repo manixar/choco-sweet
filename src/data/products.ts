@@ -70,8 +70,8 @@ export const products: Product[] = [
   {
     slug: 'pain-au-chocolat',
     index: 3,
-    name: 'پن او شکلا',
-    titleLines: ['پن او', 'شکلا'],
+    name: 'پن شکلات',
+    titleLines: ['پن', 'شکلات'],
     price: 150_000,
     weightGrams: 110,
     category: 'chocolate',

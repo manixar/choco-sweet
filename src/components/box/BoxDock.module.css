@@ -1,0 +1,320 @@
+/* ---------- Mini box parked in the corner ---------- */
+.dock {
+  position: fixed;
+  z-index: 40;
+  right: 24px;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  width: 84px;
+  height: 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  border-radius: 22px;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 18px 34px -18px rgba(59, 31, 26, 0.55);
+  padding-bottom: 8px;
+  transition: transform 0.2s;
+}
+
+.dock:hover {
+  transform: translateY(-3px) rotate(-2deg);
+}
+
+.dockEmpty {
+  opacity: 0.85;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+.count {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: var(--radius-pill);
+  display: grid;
+  place-items: center;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 0 0 3px var(--color-bg);
+}
+
+.mini {
+  position: relative;
+  width: 52px;
+  height: 46px;
+}
+
+.miniBody {
+  position: absolute;
+  inset: 14px 0 0;
+  border-radius: 3px 3px 7px 7px;
+  background: linear-gradient(180deg, #fffdf9, #efe5d7);
+  box-shadow:
+    inset 0 -3px 4px -2px rgba(90, 45, 30, 0.2),
+    0 4px 6px -3px rgba(59, 31, 26, 0.4);
+  overflow: hidden;
+}
+
+.miniTrim {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, var(--color-accent) 0 50%, #fcefdc 50% 100%) 0 0 / 10px 100%;
+}
+
+.flapL,
+.flapR {
+  position: absolute;
+  top: 12px;
+  width: 26px;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #fffdf9, #e9dccb);
+  box-shadow: 0 1px 2px rgba(59, 31, 26, 0.25);
+}
+
+.flapL {
+  left: 0;
+  transform-origin: 0 50%;
+}
+
+.flapR {
+  right: 0;
+  transform-origin: 100% 50%;
+}
+
+/* a pastry just landed: flaps open, box squishes and hops */
+.bump {
+  animation: hop 0.7s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.bump .flapL {
+  animation: flapL 0.7s ease-out;
+}
+
+.bump .flapR {
+  animation: flapR 0.7s ease-out;
+}
+
+@keyframes hop {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.18, 0.82) translateY(4px);
+  }
+  55% {
+    transform: scale(0.92, 1.1) translateY(-8px);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes flapL {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  30%,
+  60% {
+    transform: rotate(-55deg);
+  }
+}
+
+@keyframes flapR {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  30%,
+  60% {
+    transform: rotate(55deg);
+  }
+}
+
+.pop {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  translate: -50% 0;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--color-accent);
+  white-space: nowrap;
+  animation: floatUp 1s ease-out forwards;
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(0.8);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-30px) scale(1.15);
+  }
+}
+
+/* ---------- Big box sheet ---------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  place-items: center;
+  padding: 20px;
+  background: rgba(59, 31, 26, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: fade 0.25s ease both;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.sheet {
+  position: relative;
+  width: min(560px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow: auto;
+  padding: 26px 26px 22px;
+  border-radius: 30px;
+  background: var(--color-bg);
+  box-shadow: 0 40px 80px -30px rgba(59, 31, 26, 0.6);
+  animation: rise 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.92);
+  }
+}
+
+.close {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  color: var(--color-muted);
+  background: rgba(90, 45, 30, 0.07);
+}
+
+.head {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.sub {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.foot {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.total {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.total strong {
+  color: var(--color-text);
+  font-weight: 800;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ghost,
+.go {
+  height: 46px;
+  padding: 0 20px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ghost {
+  border: 1.5px dashed var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-panel);
+}
+
+.go {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  box-shadow: 0 12px 22px -12px rgba(163, 36, 59, 0.9);
+}
+
+.go:hover {
+  background: var(--color-accent-strong);
+}
+
+@media (max-width: 700px) {
+  .dock {
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    width: 70px;
+    height: 78px;
+  }
+  .overlay {
+    place-items: end center;
+    padding: 0;
+  }
+  .sheet {
+    border-radius: 28px 28px 0 0;
+    padding: 22px 16px calc(18px + env(safe-area-inset-bottom));
+    max-height: 90vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bump,
+  .bump .flapL,
+  .bump .flapR,
+  .pop,
+  .sheet,
+  .overlay {
+    animation: none;
+  }
+}

@@ -17,6 +17,7 @@ body {
 }
 
 body {
+  overflow-x: clip; /* nothing (awning, popups) may cause sideways scrolling on phones */
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font);

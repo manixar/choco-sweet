@@ -5,11 +5,15 @@ import { Icon } from '../../components/ui/Icon';
 import { products, type Category, type Product } from '../../data/products';
 import { useCart } from '../../state/cart';
 import { asset, faIndex, faNumber, toman } from '../../lib/format';
+import { MoreShelf } from '../../components/ui/MoreShelf';
 import s from './Collection.module.css';
 
-type Filter = 'all' | Category;
+export type Filter = 'all' | Category;
 
-const FILTERS: { id: Filter; label: string }[] = [
+/** How many pastries the home page shows before the "see all" shelf. */
+const HOME_LIMIT = 6;
+
+export const FILTERS: { id: Filter; label: string }[] = [
   { id: 'all', label: `همه شیرینی‌ها • ${faNumber(products.length)}` },
   { id: 'classic', label: 'کلاسیک' },
   { id: 'chocolate', label: 'شکلاتی' },
@@ -56,15 +60,21 @@ export default function Collection() {
       </div>
 
       <div className={s.grid}>
-        {visible.map((p) => (
+        {visible.slice(0, HOME_LIMIT).map((p) => (
           <ProductCard key={p.slug} product={p} />
         ))}
       </div>
+
+      <MoreShelf
+        shown={visible.slice(0, HOME_LIMIT)}
+        rest={visible.slice(HOME_LIMIT)}
+        filter={filter}
+      />
     </PageShell>
   );
 }
 
-function ProductCard({ product }: { product: Product }) {
+export function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
   return (
     <article className={s.card}>

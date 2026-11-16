@@ -26,8 +26,7 @@ export function Header() {
         {/* Left side (RTL end): shopping controls */}
         <div className={s.controls}>
           <NavLink
-            to="/"
-            end
+            to="/collection"
             className={({ isActive }) => `${s.link} ${s.collectionLink} ${isActive ? s.linkActive : ''}`}
             style={{ color: 'var(--color-text)' }}
           >
