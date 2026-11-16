@@ -76,7 +76,7 @@ export function OrderSummary({ actionLabel, to, onAction }: { actionLabel: strin
   const { lines, count, subtotal, shipping, total } = useCart();
   return (
     <aside className={`${s.card} ${s.glass} ${s.summary}`} aria-label="خلاصهٔ سفارش">
-      <h2 className={s.summaryHeading}>خلاصهٔ جعبهٔ شما</h2>
+      <h2 className={s.summaryHeading}>خلاصه جعبه شما</h2>
       <p className={s.summaryCount}>
         {faNumber(count)} شیرینی تازه • {faNumber(lines.length)} نوع انتخاب
       </p>

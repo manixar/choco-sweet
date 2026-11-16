@@ -23,7 +23,7 @@ export function PageShell({
     <div className={s.frame}>
       <img src={asset(ambient)} alt="" aria-hidden className={s.ambient} />
       <p aria-hidden className={`${s.watermark} ${watermark === 'bold' ? s.watermarkBold : s.watermarkSoft}`}>
-        چوکو بار
+        چوکوبار
       </p>
 
       <Header />
@@ -37,7 +37,7 @@ export function ServiceFooter() {
   return (
     <footer className={s.footer}>
       <div className={s.promises}>
-        <span className={s.promiseAccent}>تازه از فر چوکو بار</span>
+        <span className={s.promiseAccent}>تازه از فر چوکوبار</span>
         <span>ارسال زمان‌بندی‌شده در تهران</span>
         <span>بسته‌بندی محافظ تازگی</span>
       </div>

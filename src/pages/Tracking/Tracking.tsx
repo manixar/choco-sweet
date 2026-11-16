@@ -88,7 +88,7 @@ export default function Tracking() {
             <h2 className={s.routeTitle}>از کارگاه تا خانهٔ شما</h2>
             <img src={asset('decor/route-planned.png')} alt="" width={300} height={147} className={s.planned} />
             <img src={asset('decor/route-completed.svg')} alt="" className={s.completed} />
-            <span className={`${s.pin} ${s.bakery}`} title="کارگاه چوکو بار">
+            <span className={`${s.pin} ${s.bakery}`} title="کارگاه چوکوبار">
               <Icon src="icons/croissant.svg" size={22} />
             </span>
             <span className={`${s.pin} ${s.courier}`} title="پیک">
@@ -122,7 +122,7 @@ export default function Tracking() {
           </div>
           <div className={`${s.stack} ${s.contents}`}>
             <p className={s.strong}>۱ رول پسته + ۲ کروسان کره‌ای</p>
-            <p className={s.small}>۱ جعبهٔ محافظ • ۳ شیرینی</p>
+            <p className={s.small}>۱ جعبه محافظ • ۳ شیرینی</p>
           </div>
           <div className={ui.divider} />
           <div className={`${s.stack} ${s.recipient}`}>

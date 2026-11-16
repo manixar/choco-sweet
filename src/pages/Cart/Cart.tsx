@@ -17,7 +17,7 @@ export default function Cart() {
         <div className={l.intro}>
           <PageIntro
             eyebrow="از فر ما تا لحظهٔ شما"
-            title="جعبهٔ خوش‌سلیقهٔ شما"
+            title="جعبه خوش سلیقه شما"
             copy="انتخاب‌هایتان را مرور کنید؛ ما هر لایه را تازه برای شما آماده می‌کنیم."
           />
         </div>
@@ -28,7 +28,7 @@ export default function Cart() {
         <section className={`${l.mainCol} ${s.items}`} aria-label="اقلام سبد">
           {lines.length === 0 && (
             <div className={`${ui.card} ${s.empty}`}>
-              <p>جعبهٔ شما هنوز خالی است.</p>
+              <p>جعبه شما هنوز خالی است.</p>
               <Action to="/" variant="secondary">
                 رفتن به کالکشن شیرینی‌ها
               </Action>

@@ -19,7 +19,7 @@ export default function Review() {
       <div className={l.grid}>
         <div className={l.intro}>
           <PageIntro
-            eyebrow="بازبینی نهایی جعبهٔ شما"
+            eyebrow="بازبینی نهایی جعبه شما"
             title="یک قدم تا اولین گاز"
             copy="نشانی، زمان تحویل و انتخاب‌ها را بررسی کنید؛ سپس روش پرداخت را انتخاب کنید."
           />
@@ -94,7 +94,7 @@ export default function Review() {
               <span className={`${s.checkbox} ${accepted ? '' : s.checkboxOff}`} aria-hidden>
                 ✓
               </span>
-              شرایط خرید و ارسال چوکو بار را می‌پذیرم.
+              شرایط خرید و ارسال چوکوبار را می‌پذیرم.
             </label>
           </section>
         </div>

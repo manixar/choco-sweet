@@ -11,15 +11,15 @@ export function Header() {
     <header>
       <nav className={s.nav} aria-label="اصلی">
         {/* Right side (RTL start): brand lockup */}
-        <Link to="/" className={s.brand} aria-label="چوکو بار — صفحهٔ اصلی">
-          <Icon src="icons/artisan-emblem.svg" size={36} height={39} />
+        <Link to="/" className={s.brand} aria-label="چوکو بار — صفحه اصلی">
+          <Icon src="logo/logo-mark.png" size={56} height={50} />
           <span className={s.wordmark}>
             <span className={s.wordmarkTop}>چوکو</span>
             <span className={s.wordmarkBottom}>بار</span>
           </span>
           <span className={s.dailyBake}>
             <Icon src="icons/freshness-dot.svg" size={5} />
-            پخت روز • هنر سه‌بعدی
+            پخت روز • هنر تازگی
           </span>
         </Link>
 

@@ -10,7 +10,7 @@ import s from './Collection.module.css';
 type Filter = 'all' | Category;
 
 const FILTERS: { id: Filter; label: string }[] = [
-  { id: 'all', label: `همهٔ شیرینی‌ها • ${faNumber(products.length)}` },
+  { id: 'all', label: `همه شیرینی‌ها • ${faNumber(products.length)}` },
   { id: 'classic', label: 'کلاسیک' },
   { id: 'chocolate', label: 'شکلاتی' },
   { id: 'fruit', label: 'میوه‌ای' },
@@ -26,11 +26,12 @@ export default function Collection() {
         <div className={s.intro}>
           <p className={s.edition}>کالکشن وینوازری ۲۰۲۶ • پخت محدود روزانه</p>
           <h1 className={s.heading}>چهارده روایت از یک وسوسه</h1>
-          <p className={s.lede}>از لایهٔ اول تا آخرین خرده؛ جعبهٔ دلخواهت را بساز.</p>
+          <p className={s.lede}>از لایه اول تا آخرین خرده؛ جعبه دلخواهت را بساز.</p>
+            <p className={s.lede}>اینجا هر شیرینی داستان زندگی خودشو داره...</p>
         </div>
         <div className={s.note}>
           <p className={s.noteTitle}>دست‌ساز. آرام‌تخمیر. تازه.</p>
-          <p className={s.noteCopy}>ارسال با جعبهٔ محافظ در بازهٔ انتخابی شما</p>
+          <p className={s.noteCopy}>ارسال با جعبه محافظ در بازه انتخابی شما</p>
         </div>
       </section>
 
@@ -49,7 +50,7 @@ export default function Collection() {
           ))}
         </div>
         <button className={s.sort}>
-          مرتب‌سازی: پیشنهاد چوکو بار
+          مرتب‌سازی: پیشنهاد چوکوبار
           <Icon src="icons/chevron-down.svg" size={16} />
         </button>
       </div>

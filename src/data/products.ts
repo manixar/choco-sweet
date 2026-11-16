@@ -99,7 +99,7 @@ export const products: Product[] = [
     specs: { weight: '۱۸۰ گرم', serveTemp: '', proof: '' },
     ingredients: { top: '', bottom: '' },
     allergens: '',
-    badge: 'امضای چوکو بار',
+    badge: 'امضای چوکوبار',
     images: {
       portrait: 'products/portrait-pistachio.png',
       cart: 'products/portrait-pistachio.png',

@@ -20,7 +20,7 @@ export default function Confirmation() {
                 <h1 className={s.title}>لحظهٔ شیرین شما ثبت شد.</h1>
               </div>
             </div>
-            <p className={s.lede}>ممنون از انتخاب چوکو بار؛ جعبهٔ شما برای پخت و آماده‌سازی برنامه‌ریزی شد.</p>
+            <p className={s.lede}>ممنون از انتخاب چوکوبار؛ جعبه شما برای پخت و آماده‌سازی برنامه‌ریزی شد.</p>
           </header>
 
           <section className={`${ui.card} ${s.receipt}`} aria-label="جزئیات سفارش">
@@ -57,7 +57,7 @@ export default function Confirmation() {
               <p className={s.deliveryAddress}>
                 {o.recipient} • {o.address}
               </p>
-              <p className={s.deliveryType}>پیک محافظ تازگی • جعبهٔ محافظ مخصوص شیرینی</p>
+              <p className={s.deliveryType}>پیک محافظ تازگی • جعبه محافظ مخصوص شیرینی</p>
             </div>
           </section>
 
@@ -71,11 +71,11 @@ export default function Confirmation() {
           </div>
         </div>
 
-        <aside className={`${ui.card} ${s.gift}`} aria-label="بسته‌بندی چوکو بار">
+        <aside className={`${ui.card} ${s.gift}`} aria-label="بسته‌بندی چوکوبار">
           <img src={asset('decor/packaging-glow.svg')} alt="" aria-hidden className={s.giftGlow} />
-          <p className={s.giftBrand}>چوکو بار</p>
+          <p className={s.giftBrand}>چوکوبار</p>
           <p className={s.giftOverline}>با ظرافت پخته، با عشق بسته‌بندی می‌شود</p>
-          <img src={asset('decor/gift-box.png')} alt="جعبهٔ هدیهٔ چوکو بار" className={s.giftBox} />
+          <img src={asset('decor/gift-box.png')} alt="جعبه هدیه چوکوبار" className={s.giftBox} />
           <div className={s.giftMessage}>
             <p className={s.giftHeading}>یک جعبه، سه لحظهٔ شیرین</p>
             <p className={s.giftCopy}>از دست‌های قناد ما تا خانهٔ شما؛ تازه، ظریف و آمادهٔ لذت بردن.</p>
