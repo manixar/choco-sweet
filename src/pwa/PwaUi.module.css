@@ -419,6 +419,12 @@
   }
 }
 
+/* installed app: lift popups above the bottom bar */
+:global(html.standalone) .oven,
+:global(html.standalone) .sheetWrap {
+  bottom: calc(84px + env(safe-area-inset-bottom));
+}
+
 @media (prefers-reduced-motion: reduce) {
   .oven,
   .sheet,

@@ -83,6 +83,16 @@ export default function Review() {
                   </span>
                 </span>
               </OptionTile>
+              <OptionTile name="payment" selected={payment === 'wallet'} onSelect={() => setPayment('wallet')} className={s.option}>
+                <span className={s.optionText}>
+                  <span className={`${s.optionTitle} ${payment === 'wallet' ? s.optionSelectedTitle : ''}`}>
+                   پرداخت با اسنپ پی
+                  </span>
+                  <span className={`${s.optionHint} ${payment === 'wallet' ? s.optionSelectedHint : ''}`}>
+                    موجودی: ۰ تومان • نیاز به شارژ
+                  </span>
+                </span>
+              </OptionTile>
             </div>
             <label className={s.terms}>
               <input

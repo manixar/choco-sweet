@@ -4,7 +4,6 @@ export interface Product {
   slug: string;
   index: number;
   name: string;
-  /** Hero title broken into two lines, as in the design */
   titleLines: [string, string];
   price: number;
   weightGrams: number;
@@ -95,18 +94,18 @@ export const products: Product[] = [
     weightGrams: 180,
     category: 'chocolate',
     categoryLabel: 'کالکشن وینوازری',
-    description: '',
-    specs: { weight: '۱۸۰ گرم', serveTemp: '', proof: '' },
-    ingredients: { top: '', bottom: '' },
-    allergens: '',
+    description: 'حلقه‌ای از صدها لایهٔ کره‌ای ترد که دور خودش پیچیده؛ لبریز از کرم پستهٔ ابریشمی، با روکش شکلات سفید پسته‌ای و خردهٔ پسته و گلبرگ گل‌محمدی.',
+    specs: { weight: '۱۸۰ گرم', serveTemp: '۱۸ درجه', proof: '۴۸ ساعت' },
+    ingredients: { top: 'روکش پسته و گلبرگ گل‌محمدی', bottom: 'لایه‌های کره‌ای مارپیچ' },
+    allergens: 'حاوی گلوتن، شیر، تخم‌مرغ و پسته',
     badge: 'امضای چوکوبار',
     images: {
       portrait: 'products/portrait-pistachio.png',
+      floating: 'products/portrait-pistachio.png',
       cart: 'products/portrait-pistachio.png',
       thumb: 'products/portrait-pistachio.png',
     },
-    // The Figma file has no «چوکو بار» product page for this pastry.
-    hasPage: false,
+    hasPage: true,
   },
   {
     slug: 'strawberry-danish',

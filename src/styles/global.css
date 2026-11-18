@@ -71,3 +71,8 @@ img {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* installed app: leave room for the bottom bar */
+html.standalone body {
+  padding-bottom: calc(76px + env(safe-area-inset-bottom));
+}

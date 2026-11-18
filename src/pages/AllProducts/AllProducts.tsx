@@ -69,7 +69,7 @@ export default function AllProducts() {
         <div>
           <h1 className={s.heading}>ویترین کامل چوکو بار</h1>
           <p className={s.lede}>
-            {faNumber(products.length)} شیرینی و نان تازه؛ بگرد، بچین و جعبهٔ خودت رو بساز.
+            {faNumber(products.length)} شیرینی و نان تازه؛ بگرد، بچین و جعبه خودت رو بساز.
           </p>
         </div>
 

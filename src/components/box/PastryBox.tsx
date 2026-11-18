@@ -9,7 +9,19 @@ const img = (l: CartLine) => asset(l.product.images.cart ?? l.product.images.thu
  * cart wrapped in a cellophane bag tied with a yellow ribbon.
  * `fresh` marks the slug that was just added so it drops in with a bounce.
  */
-export function PastryBox({ lines, fresh }: { lines: CartLine[]; fresh?: string | null }) {
+export function PastryBox({
+  lines,
+  fresh,
+  leaving,
+  onChange,
+}: {
+  lines: CartLine[];
+  fresh?: string | null;
+  /** slug currently being lifted out of the box (plays the exit animation) */
+  leaving?: string | null;
+  /** when given, each packet gets − / + controls */
+  onChange?: (slug: string, qty: number) => void;
+}) {
   return (
     <div className={s.box}>
       <div className={s.lid} aria-hidden>
@@ -28,7 +40,7 @@ export function PastryBox({ lines, fresh }: { lines: CartLine[]; fresh?: string 
             {lines.map((l, i) => (
               <li
                 key={l.product.slug}
-                className={`${s.packet} ${fresh === l.product.slug ? s.fresh : ''}`}
+                className={`${s.packet} ${fresh === l.product.slug ? s.fresh : ''} ${leaving === l.product.slug ? s.leaving : ''}`}
                 style={{ ['--tilt' as string]: `${((i * 37) % 9) - 4}deg` }}
               >
                 {l.qty > 1 && <span className={`${s.bag} ${s.behind}`} aria-hidden />}
@@ -45,6 +57,27 @@ export function PastryBox({ lines, fresh }: { lines: CartLine[]; fresh?: string 
                   <i className={s.knot} />
                 </span>
                 {l.qty > 1 && <span className={s.qty}>×{faNumber(l.qty)}</span>}
+                {onChange && (
+                  <span className={s.controls}>
+                    <button
+                      type="button"
+                      className={s.ctrl}
+                      onClick={() => onChange(l.product.slug, l.qty + 1)}
+                      aria-label={`یکی دیگه ${l.product.name}`}
+                    >
+                      +
+                    </button>
+                    <button
+                      type="button"
+                      className={`${s.ctrl} ${l.qty === 1 ? s.ctrlOut : ''}`}
+                      onClick={() => onChange(l.product.slug, l.qty - 1)}
+                      aria-label={l.qty === 1 ? `دربیار ${l.product.name} از جعبه` : `یکی کمتر ${l.product.name}`}
+                      title={l.qty === 1 ? 'از جعبه درش بیار' : 'یکی کمتر'}
+                    >
+                      {l.qty === 1 ? '×' : '−'}
+                    </button>
+                  </span>
+                )}
               </li>
             ))}
           </ul>

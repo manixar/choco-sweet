@@ -124,12 +124,15 @@ export default function Product() {
 
           <nav ref={dockRef} className={`${s.abs} ${s.dock}`} aria-label="کالکشن شیرینی‌ها">
             {products.map((p) => {
-              const label = `${faIndex(p.index)}. ${p.name}`;
+              const label = `${faIndex(p.index)}. ${p.name}`; // used for pastries without a page
               const active = p.slug === product.slug;
               const cls = `${s.choice} ${active ? s.choiceActive : ''}`;
               return p.hasPage ? (
                 <Link key={p.slug} to={`/product/${p.slug}`} className={cls} aria-current={active ? 'page' : undefined}>
-                  {label}
+                  <img src={asset(p.images.thumb ?? p.images.portrait)} alt="" className={s.choiceThumb} loading="lazy" />
+                  <span className={s.choiceLabel}>
+                    <span className={s.choiceNo}>{faIndex(p.index)}.</span> {p.name}
+                  </span>
                 </Link>
               ) : (
                 <span key={p.slug} className={cls} title="صفحهٔ این محصول در فایل طراحی نیست">

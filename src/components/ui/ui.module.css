@@ -279,13 +279,35 @@
 
 @media (max-width: 700px) {
   .progress {
-    padding: 0 16px;
+    height: auto;
+    padding: 10px 12px;
+    border-radius: 22px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
   }
-  .step span:last-child {
-    display: none;
+  /* thin line joining the three steps */
+  .progress::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 18%;
+    right: 18%;
+    height: 2px;
+    background: var(--color-border);
   }
-  .step.stepCurrent span:last-child {
-    display: inline;
+  .step {
+    position: relative;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 11px;
+    white-space: normal;
+    text-align: center;
+  }
+  .stepIndicator {
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 4px var(--color-bg);
   }
   .pastryRow {
     flex-direction: column;

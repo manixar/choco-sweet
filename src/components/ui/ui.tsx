@@ -91,9 +91,10 @@ export function OrderSummary({ actionLabel, to, onAction }: { actionLabel: strin
       <div className={s.divider} />
       <div className={s.totalRow}>
         <span className={s.totalLabel}>مبلغ قابل پرداخت</span>
-        <span className={s.totalPayable}>{faNumber(total)}</span>
+        <span className={s.totalPayable}>
+          {faNumber(total)} <small className={s.currency}>تومان</small>
+        </span>
       </div>
-      <p className={s.currency}>تومان</p>
       <Action icon="icons/arrow-left-dark.svg" block to={to} onClick={onAction}>
         {actionLabel}
       </Action>

@@ -11,6 +11,7 @@ import Tracking from './pages/Tracking/Tracking';
 import { Awning } from './components/layout/Awning';
 import { PwaUi } from './pwa/PwaUi';
 import { BoxDock } from './components/box/BoxDock';
+import { AppBar } from './components/layout/AppBar';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -27,6 +28,7 @@ export default function App() {
       <Awning />
       <PwaUi />
       <BoxDock />
+      <AppBar />
       <Routes>
         <Route path="/" element={<Collection />} />
         <Route path="/collection" element={<AllProducts />} />

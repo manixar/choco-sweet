@@ -11,7 +11,7 @@ if (typeof window !== 'undefined') {
   window.addEventListener('pointerdown', (e) => (lastPointer = { x: e.clientX, y: e.clientY }), { capture: true });
 }
 
-const HIDDEN_ON = /^\/(checkout|order)/;
+const HIDDEN_ON = /^\/(cart|checkout|order)/;
 
 /**
  * A little pastry box parked in the corner. Whenever something lands in the
@@ -19,13 +19,39 @@ const HIDDEN_ON = /^\/(checkout|order)/;
  * flaps open and bounces. Tapping it opens the big box view.
  */
 export function BoxDock() {
-  const { lines, count, subtotal } = useCart();
+  const { lines, count, subtotal, setQty, add } = useCart();
   const { pathname } = useLocation();
   const dockRef = useRef<HTMLButtonElement>(null);
   const prev = useRef(new Map(lines.map((l) => [l.product.slug, l.qty])));
   const [bump, setBump] = useState(0);
   const [fresh, setFresh] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
+  const openRef = useRef(false);
+  openRef.current = open;
+  const [leaving, setLeaving] = useState<string | null>(null);
+  const [undo, setUndo] = useState<{ slug: string; name: string; qty: number } | null>(null);
+  const undoTimer = useRef<number>();
+
+  const change = (slug: string, qty: number) => {
+    const line = lines.find((l) => l.product.slug === slug);
+    if (!line) return;
+    if (qty > 0) return setQty(slug, qty);
+    // last one: lift it out of the box, then remove, and offer an undo
+    setLeaving(slug);
+    window.setTimeout(() => {
+      setQty(slug, 0);
+      setLeaving(null);
+      setUndo({ slug, name: line.product.name, qty: line.qty });
+      window.clearTimeout(undoTimer.current);
+      undoTimer.current = window.setTimeout(() => setUndo(null), 5000);
+    }, 420);
+  };
+
+  const restore = () => {
+    if (!undo) return;
+    for (let i = 0; i < undo.qty; i++) add(undo.slug);
+    setUndo(null);
+  };
 
   // Detect which pastry was added by diffing quantities.
   useEffect(() => {
@@ -38,7 +64,7 @@ export function BoxDock() {
     const src = asset(added.product.images.cart ?? added.product.images.thumb ?? added.product.images.portrait);
     const dock = dockRef.current?.getBoundingClientRect();
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!dock || reduce) {
+    if (!dock || reduce || openRef.current) {
       setBump((n) => n + 1);
       return;
     }
@@ -47,6 +73,13 @@ export function BoxDock() {
     );
     lastPointer = null;
   }, [lines]);
+
+  // The installed app's bottom bar asks for the box with an event.
+  useEffect(() => {
+    const show = () => setOpen(true);
+    window.addEventListener('chocobar:open-box', show);
+    return () => window.removeEventListener('chocobar:open-box', show);
+  }, []);
 
   // Close the sheet on navigation / Escape.
   useEffect(() => setOpen(false), [pathname]);
@@ -57,7 +90,7 @@ export function BoxDock() {
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
-  if (HIDDEN_ON.test(pathname)) return null;
+  if (HIDDEN_ON.test(pathname) && !open) return null;
 
   return (
     <>
@@ -65,7 +98,7 @@ export function BoxDock() {
         ref={dockRef}
         className={`${s.dock} ${count ? '' : s.dockEmpty}`}
         onClick={() => setOpen(true)}
-        aria-label={`جعبهٔ شیرینی — ${faNumber(count)} عدد`}
+        aria-label={`جعبه شیرینی — ${faNumber(count)} عدد`}
       >
         <span key={bump} className={`${s.mini} ${bump ? s.bump : ''}`}>
           <span className={s.flapL} />
@@ -80,7 +113,7 @@ export function BoxDock() {
           )}
         </span>
         {count > 0 && <span className={s.count}>{faNumber(count)}</span>}
-        <span className={s.label}>جعبهٔ من</span>
+        <span className={s.label}>جعبه من</span>
       </button>
 
       {open && (
@@ -97,14 +130,21 @@ export function BoxDock() {
             </button>
             <header className={s.head}>
               <h2 id="box-title" className={s.title}>
-                جعبهٔ شیرینی‌ت 🎀
+                جعبه شیرینی‌ت 🎀
               </h2>
               <p className={s.sub}>
                 {count ? `${faNumber(count)} شیرینی، هرکدوم توی سلفون و روبان خودش` : 'هنوز چیزی توش نیست'}
               </p>
             </header>
 
-            <PastryBox lines={lines} fresh={fresh} />
+            <PastryBox lines={lines} fresh={fresh} leaving={leaving} onChange={change} />
+
+            {undo && (
+              <p className={s.undo} role="status">
+                <span>{undo.name} از جعبه دراومد </span>
+                <button onClick={restore}>برش گردون</button>
+              </p>
+            )}
 
             <footer className={s.foot}>
               {count > 0 && (

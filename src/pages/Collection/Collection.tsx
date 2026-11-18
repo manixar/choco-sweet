@@ -13,6 +13,9 @@ export type Filter = 'all' | Category;
 /** How many pastries the home page shows before the "see all" shelf. */
 const HOME_LIMIT = 6;
 
+/** Pastries floating in the hero showcase (main, back-left, front). */
+const HERO_PASTRIES = ['butter-croissant', 'pistachio-new-york-roll', 'pain-au-chocolat'];
+
 export const FILTERS: { id: Filter; label: string }[] = [
   { id: 'all', label: `همه شیرینی‌ها • ${faNumber(products.length)}` },
   { id: 'classic', label: 'کلاسیک' },
@@ -28,18 +31,59 @@ export default function Collection() {
     <PageShell>
       <section className={s.top}>
         <div className={s.intro}>
-          <p className={s.edition}>کالکشن وینوازری ۲۰۲۶ • پخت محدود روزانه</p>
-          <h1 className={s.heading}>چهارده روایت از یک وسوسه</h1>
-          <p className={s.lede}>از لایه اول تا آخرین خرده؛ جعبه دلخواهت را بساز.</p>
-            <p className={s.lede}>اینجا هر شیرینی داستان زندگی خودشو داره...</p>
+          <p className={s.edition}>
+            <span className={s.dot} aria-hidden />
+            کالکشن وینوازری ۲۰۲۶ • پخت محدود روزانه
+          </p>
+          <h1 className={s.heading}>
+            {faNumber(products.length)} روایت
+            <br />
+            از یک <em className={s.accentWord}>وسوسه</em>
+          </h1>
+          <p className={s.lede}>
+            اینجا هر شیرینی داستان زندگی خودشو داره؛ از لایه اول تا آخرین خرده. جعبه دلخواهت را بساز.
+          </p>
+
+          <ul className={s.perks} aria-label="ویژگی‌ها">
+            <li>
+              <span aria-hidden>🤲</span>دست‌ساز
+            </li>
+            <li>
+              <span aria-hidden>⏳</span>آرام‌تخمیر
+            </li>
+            <li>
+              <span aria-hidden>🔥</span>تازه از فر
+            </li>
+          </ul>
+
+          <div className={s.ctaRow}>
+            <a href="#pastries" className={s.cta}>
+              جعبه‌ات رو بچین
+              <span className={s.ctaArrow} aria-hidden>
+                ↓
+              </span>
+            </a>
+            <p className={s.note}>
+              <Icon src="icons/truck-16-accent.svg" size={16} />
+              ارسال با جعبه محافظ در بازه انتخابی شما
+            </p>
+          </div>
         </div>
-        <div className={s.note}>
-          <p className={s.noteTitle}>دست‌ساز. آرام‌تخمیر. تازه.</p>
-          <p className={s.noteCopy}>ارسال با جعبه محافظ در بازه انتخابی شما</p>
+
+        <div className={s.showcase} aria-hidden>
+          <span className={s.plate} />
+          {HERO_PASTRIES.map((slug, i) => {
+            const p = products.find((x) => x.slug === slug);
+            return p ? <img key={slug} src={asset(p.images.floating ?? p.images.portrait)} alt="" className={s[`hero${i}`]} /> : null;
+          })}
+          <span className={s.sticker}>
+            <strong>{faNumber(products.length)}</strong>
+            طعم تازه
+          </span>
         </div>
       </section>
 
-      <div className={s.filters}>
+      <div className={s.filters} id="pastries">
         <div className={s.categories} role="tablist" aria-label="دسته‌بندی">
           {FILTERS.map((f) => (
             <button

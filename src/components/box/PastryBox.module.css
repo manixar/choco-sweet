@@ -50,7 +50,7 @@
 .inside {
   position: relative;
   min-height: 210px;
-  padding: 18px 26px 70px;
+  padding: 18px 26px 96px;
   border-radius: 10px 10px 0 0;
   background:
     linear-gradient(180deg, #e9dfd1 0%, #f4ece1 40%, #efe5d7 100%);
@@ -75,7 +75,7 @@
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 18px 14px;
+  gap: 34px 14px;
   justify-items: center;
 }
 
@@ -223,6 +223,65 @@
   font-weight: 800;
   rotate: -8deg;
   box-shadow: 0 4px 8px -4px rgba(163, 36, 59, 0.9);
+}
+
+/* − / + controls under each packet */
+.controls {
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 4;
+  display: flex;
+  gap: 4px;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--color-panel);
+  box-shadow: 0 6px 12px -6px rgba(59, 31, 26, 0.5);
+  rotate: calc(var(--tilt) * -1); /* keep buttons level */
+}
+
+.ctrl {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--color-accent-tint);
+  color: var(--color-accent);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    transform 0.15s;
+}
+
+.ctrl:hover {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  transform: scale(1.1);
+}
+
+.ctrlOut {
+  font-size: 18px;
+}
+
+/* the pastry being taken out lifts up and fades */
+.leaving {
+  animation: liftOut 0.45s ease-in forwards;
+  pointer-events: none;
+}
+
+@keyframes liftOut {
+  30% {
+    transform: translateY(8px) rotate(4deg);
+  }
+  100% {
+    transform: translateY(-140px) rotate(-18deg) scale(0.7);
+    opacity: 0;
+  }
 }
 
 /* the pastry that was just added drops in */

@@ -1,0 +1,265 @@
+diff --git a/src/components/box/BoxDock.module.css b/src/components/box/BoxDock.module.css
+index 1a8fc04..33255e0 100644
+--- a/src/components/box/BoxDock.module.css
++++ b/src/components/box/BoxDock.module.css
+@@ -168,6 +168,40 @@
+   }
+ }
+ 
++/* undo bar after taking a pastry out */
++.undo {
++  margin: 16px auto 0;
++  width: fit-content;
++  max-width: 100%;
++  display: flex;
++  align-items: center;
++  gap: 12px;
++  padding: 8px 8px 8px 16px;
++  padding-inline: 16px 8px;
++  border-radius: var(--radius-pill);
++  background: var(--color-text);
++  color: #fff8ee;
++  font-size: 13px;
++  animation: undoIn 0.35s cubic-bezier(0.34, 1.5, 0.64, 1) both;
++}
++
++.undo button {
++  height: 30px;
++  padding: 0 14px;
++  border-radius: var(--radius-pill);
++  background: #fff8ee;
++  color: var(--color-accent);
++  font-size: 12px;
++  font-weight: 800;
++}
++
++@keyframes undoIn {
++  from {
++    opacity: 0;
++    transform: translateY(10px) scale(0.95);
++  }
++}
++
+ /* ---------- Big box sheet ---------- */
+ .overlay {
+   position: fixed;
+diff --git a/src/components/box/BoxDock.tsx b/src/components/box/BoxDock.tsx
+index 8c6e2b0..b39a514 100644
+--- a/src/components/box/BoxDock.tsx
++++ b/src/components/box/BoxDock.tsx
+@@ -19,13 +19,39 @@ const HIDDEN_ON = /^\/(checkout|order)/;
+  * flaps open and bounces. Tapping it opens the big box view.
+  */
+ export function BoxDock() {
+-  const { lines, count, subtotal } = useCart();
++  const { lines, count, subtotal, setQty, add } = useCart();
+   const { pathname } = useLocation();
+   const dockRef = useRef<HTMLButtonElement>(null);
+   const prev = useRef(new Map(lines.map((l) => [l.product.slug, l.qty])));
+   const [bump, setBump] = useState(0);
+   const [fresh, setFresh] = useState<string | null>(null);
+   const [open, setOpen] = useState(false);
++  const openRef = useRef(false);
++  openRef.current = open;
++  const [leaving, setLeaving] = useState<string | null>(null);
++  const [undo, setUndo] = useState<{ slug: string; name: string; qty: number } | null>(null);
++  const undoTimer = useRef<number>();
++
++  const change = (slug: string, qty: number) => {
++    const line = lines.find((l) => l.product.slug === slug);
++    if (!line) return;
++    if (qty > 0) return setQty(slug, qty);
++    // last one: lift it out of the box, then remove, and offer an undo
++    setLeaving(slug);
++    window.setTimeout(() => {
++      setQty(slug, 0);
++      setLeaving(null);
++      setUndo({ slug, name: line.product.name, qty: line.qty });
++      window.clearTimeout(undoTimer.current);
++      undoTimer.current = window.setTimeout(() => setUndo(null), 5000);
++    }, 420);
++  };
++
++  const restore = () => {
++    if (!undo) return;
++    for (let i = 0; i < undo.qty; i++) add(undo.slug);
++    setUndo(null);
++  };
+ 
+   // Detect which pastry was added by diffing quantities.
+   useEffect(() => {
+@@ -38,7 +64,7 @@ export function BoxDock() {
+     const src = asset(added.product.images.cart ?? added.product.images.thumb ?? added.product.images.portrait);
+     const dock = dockRef.current?.getBoundingClientRect();
+     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+-    if (!dock || reduce) {
++    if (!dock || reduce || openRef.current) {
+       setBump((n) => n + 1);
+       return;
+     }
+@@ -104,7 +130,14 @@ export function BoxDock() {
+               </p>
+             </header>
+ 
+-            <PastryBox lines={lines} fresh={fresh} />
++            <PastryBox lines={lines} fresh={fresh} leaving={leaving} onChange={change} />
++
++            {undo && (
++              <p className={s.undo} role="status">
++                <span>{undo.name} از جعبه دراومد </span>
++                <button onClick={restore}>برش گردون</button>
++              </p>
++            )}
+ 
+             <footer className={s.foot}>
+               {count > 0 && (
+diff --git a/src/components/box/PastryBox.module.css b/src/components/box/PastryBox.module.css
+index 1bf2d35..b8fefde 100644
+--- a/src/components/box/PastryBox.module.css
++++ b/src/components/box/PastryBox.module.css
+@@ -50,7 +50,7 @@
+ .inside {
+   position: relative;
+   min-height: 210px;
+-  padding: 18px 26px 70px;
++  padding: 18px 26px 96px;
+   border-radius: 10px 10px 0 0;
+   background:
+     linear-gradient(180deg, #e9dfd1 0%, #f4ece1 40%, #efe5d7 100%);
+@@ -75,7 +75,7 @@
+   list-style: none;
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+-  gap: 18px 14px;
++  gap: 34px 14px;
+   justify-items: center;
+ }
+ 
+@@ -225,6 +225,65 @@
+   box-shadow: 0 4px 8px -4px rgba(163, 36, 59, 0.9);
+ }
+ 
++/* − / + controls under each packet */
++.controls {
++  position: absolute;
++  bottom: -14px;
++  left: 50%;
++  translate: -50% 0;
++  z-index: 4;
++  display: flex;
++  gap: 4px;
++  padding: 3px;
++  border-radius: var(--radius-pill);
++  background: var(--color-panel);
++  box-shadow: 0 6px 12px -6px rgba(59, 31, 26, 0.5);
++  rotate: calc(var(--tilt) * -1); /* keep buttons level */
++}
++
++.ctrl {
++  width: 26px;
++  height: 26px;
++  border-radius: 50%;
++  display: grid;
++  place-items: center;
++  background: var(--color-accent-tint);
++  color: var(--color-accent);
++  font-size: 16px;
++  font-weight: 800;
++  line-height: 1;
++  transition:
++    background 0.15s,
++    color 0.15s,
++    transform 0.15s;
++}
++
++.ctrl:hover {
++  background: var(--color-accent);
++  color: var(--color-on-accent);
++  transform: scale(1.1);
++}
++
++.ctrlOut {
++  font-size: 18px;
++}
++
++/* the pastry being taken out lifts up and fades */
++.leaving {
++  animation: liftOut 0.45s ease-in forwards;
++  pointer-events: none;
++}
++
++@keyframes liftOut {
++  30% {
++    transform: translateY(8px) rotate(4deg);
++  }
++  100% {
++    transform: translateY(-140px) rotate(-18deg) scale(0.7);
++    opacity: 0;
++  }
++}
++
+ /* the pastry that was just added drops in */
+ .fresh {
+   animation: drop 0.9s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+diff --git a/src/components/box/PastryBox.tsx b/src/components/box/PastryBox.tsx
+index 45012cc..aff6c15 100644
+--- a/src/components/box/PastryBox.tsx
++++ b/src/components/box/PastryBox.tsx
+@@ -9,7 +9,19 @@ const img = (l: CartLine) => asset(l.product.images.cart ?? l.product.images.thu
+  * cart wrapped in a cellophane bag tied with a yellow ribbon.
+  * `fresh` marks the slug that was just added so it drops in with a bounce.
+  */
+-export function PastryBox({ lines, fresh }: { lines: CartLine[]; fresh?: string | null }) {
++export function PastryBox({
++  lines,
++  fresh,
++  leaving,
++  onChange,
++}: {
++  lines: CartLine[];
++  fresh?: string | null;
++  /** slug currently being lifted out of the box (plays the exit animation) */
++  leaving?: string | null;
++  /** when given, each packet gets − / + controls */
++  onChange?: (slug: string, qty: number) => void;
++}) {
+   return (
+     <div className={s.box}>
+       <div className={s.lid} aria-hidden>
+@@ -28,7 +40,7 @@ export function PastryBox({ lines, fresh }: { lines: CartLine[]; fresh?: string
+             {lines.map((l, i) => (
+               <li
+                 key={l.product.slug}
+-                className={`${s.packet} ${fresh === l.product.slug ? s.fresh : ''}`}
++                className={`${s.packet} ${fresh === l.product.slug ? s.fresh : ''} ${leaving === l.product.slug ? s.leaving : ''}`}
+                 style={{ ['--tilt' as string]: `${((i * 37) % 9) - 4}deg` }}
+               >
+                 {l.qty > 1 && <span className={`${s.bag} ${s.behind}`} aria-hidden />}
+@@ -45,6 +57,27 @@ export function PastryBox({ lines, fresh }: { lines: CartLine[]; fresh?: string
+                   <i className={s.knot} />
+                 </span>
+                 {l.qty > 1 && <span className={s.qty}>×{faNumber(l.qty)}</span>}
++                {onChange && (
++                  <span className={s.controls}>
++                    <button
++                      type="button"
++                      className={s.ctrl}
++                      onClick={() => onChange(l.product.slug, l.qty + 1)}
++                      aria-label={`یکی دیگه ${l.product.name}`}
++                    >
++                      +
++                    </button>
++                    <button
++                      type="button"
++                      className={`${s.ctrl} ${l.qty === 1 ? s.ctrlOut : ''}`}
++                      onClick={() => onChange(l.product.slug, l.qty - 1)}
++                      aria-label={l.qty === 1 ? `دربیار ${l.product.name} از جعبه` : `یکی کمتر ${l.product.name}`}
++                      title={l.qty === 1 ? 'از جعبه درش بیار' : 'یکی کمتر'}
++                    >
++                      {l.qty === 1 ? '×' : '−'}
++                    </button>
++                  </span>
++                )}
+               </li>
+             ))}
+           </ul>

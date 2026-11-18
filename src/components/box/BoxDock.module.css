@@ -168,6 +168,44 @@
   }
 }
 
+/* undo bar after taking a pastry out */
+.undo {
+  margin: 16px auto 0;
+  width: fit-content;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 16px;
+  padding-inline: 16px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-text);
+  color: #fff8ee;
+  font-size: 13px;
+  animation: undoIn 0.35s cubic-bezier(0.34, 1.5, 0.64, 1) both;
+}
+
+.undo button {
+  height: 30px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  background: #fff8ee;
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+@keyframes undoIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+}
+
+:global(html.standalone) .dock {
+  display: none;
+}
+
 /* ---------- Big box sheet ---------- */
 .overlay {
   position: fixed;

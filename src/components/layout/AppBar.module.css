@@ -1,0 +1,123 @@
+/* Only shown inside the installed app (html.standalone) */
+.bar {
+  display: none;
+}
+
+:global(html.standalone) .bar {
+  position: fixed;
+  z-index: 45;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
+  background: rgba(255, 253, 248, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -10px 30px -20px rgba(59, 31, 26, 0.45);
+}
+
+/* striped awning edge on top of the bar, matching the header */
+:global(html.standalone) .bar::before {
+  content: '';
+  position: absolute;
+  inset: -4px 0 auto;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent) 0 50%, #fcefdc 50% 100%) 0 0 / 24px 100%;
+}
+
+.item {
+  position: relative;
+  height: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border-radius: 16px;
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 600;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    color 0.15s,
+    background 0.15s;
+}
+
+.item svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.item:active {
+  background: var(--color-accent-tint);
+  transform: scale(0.96);
+}
+
+.item:disabled {
+  opacity: 0.35;
+}
+
+.active {
+  color: var(--color-accent);
+  font-weight: 800;
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+/* little striped pastry box icon */
+.boxIcon {
+  position: relative;
+  width: 26px;
+  height: 21px;
+  margin-top: 2px;
+  border-radius: 3px 3px 6px 6px;
+  background: linear-gradient(180deg, #fffdf9, #efe5d7);
+  box-shadow:
+    inset 0 0 0 1.6px currentColor,
+    0 3px 5px -3px rgba(59, 31, 26, 0.5);
+  overflow: hidden;
+}
+
+.boxIcon i {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, var(--color-accent) 0 50%, #fcefdc 50% 100%) 0 0 / 6px 100%;
+}
+
+.boxItem {
+  color: var(--color-text);
+}
+
+.badge {
+  position: absolute;
+  top: 2px;
+  left: calc(50% - 22px);
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-size: 10px;
+  font-weight: 800;
+  box-shadow: 0 0 0 2px #fffdf8;
+}
